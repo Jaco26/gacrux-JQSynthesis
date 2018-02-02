@@ -7,7 +7,9 @@
     <script src="inventory.js" charset="utf-8"></script>
   </head>
   <body>
+
     <h1>Do You Have This?</h1>
+
     <section id='addToInventory'>
       <h2>Add Item to inventory</h2>
       <select id='colorIn'>
@@ -30,12 +32,36 @@
       <input type="text" id='descriptionIn' placeholder="description">
       <button id='addButton'>Add to Inventory</button>
       <ul id='inventoryOut'>
-        <li>huge green Hulk</li>
+
       </ul>
     </section>
-    <section id='searchInventory'>
 
+    <section id='searchInventory'>
+      <h2>Search Inventory</h2>
+      <select id='colorSearchIn'>
+        <option>red</option>
+        <option>orange</option>
+        <option>yellow</option>
+        <option>green</option>
+        <option>mermaid treasure</option>
+        <option>blue</option>
+        <option>indigo</option>
+        <option>violet/purle</option>
+      </select>
+      <select id='sizeSearchIn'>
+        <option>tiny</option>
+        <option>small</option>
+        <option>medium</option>
+        <option>large</option>
+        <option>huge</option>
+      </select>
+      <button id="searchButton">search</button>
+      <h3>Matches</h3>
+      <ul id="matchesOut">
+
+      </ul>
     </section>
+
     <section id='shoppingcart'>
 
     </section>

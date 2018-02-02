@@ -1,5 +1,6 @@
 var inventory = [];
 
+
 $( document ).ready( function(){
     $( '#addButton' ).on( 'click', function(){
       console.log( 'in addButton on click' );
@@ -15,8 +16,21 @@ $( document ).ready( function(){
       // update DOM
       displayInventory();
       // display a success alert
-      alert( 'Added to inventory!' );
+      //alert( 'Added to inventory!' );
     }); //end addButton on click
+    $('#searchButton').on('click', function(){
+      var matches = [];
+      // loop through inventory and find Matches
+      for(i = 0; i < inventory.length; i++){
+        // if both size and color are a match, push into matches array
+        if(inventory[i].size === $('#sizeSearchIn').val() && inventory[i].color ===   $('#colorSearchIn').val()){
+          console.log(inventory[i]);
+          // push into matches
+          matches.push(inventory[i]);
+        } // end match found
+      }// end for loop
+      displayMatches(matches);
+    });
 }); // end doc ready
 
 function displayInventory(){
@@ -36,3 +50,20 @@ function displayInventory(){
     outputList.append( stringToAppend );
   } // end for
 } // end displayInventory
+
+function displayMatches(matchesArray){
+  var matchesOutput = $('#matchesOut');
+  matchesOutput.empty();
+  if(matchesArray.length > 0){
+    for (var i = 0; i < matchesArray.length; i++) {
+      var outputString = '<li>';
+      //outputString += matchesArray[i].size + ' ';
+      //outputString += matchesArray[i].color + ' ';
+      outputString += matchesArray[i].description;
+      outputString += '</li>';
+      matchesOutput.append(outputString);
+    }
+  } else {
+    matchesOutput.append('<li>NONE</li>');
+  }
+}
