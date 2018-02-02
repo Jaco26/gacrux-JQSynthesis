@@ -1,4 +1,5 @@
 var inventory = [];
+var cart = [];
 
 
 $( document ).ready( function(){
@@ -32,7 +33,13 @@ $( document ).ready( function(){
       displayMatches(matches);
     });
     $('#matchesOut').on('click', '.addToCartButton', function(){
-      console.log($(this).data('description')); // get the data-description attribute of the clicked element
+      for (var i = 0; i < inventory.length; i++) {
+        if(inventory[i].description === $(this).data('description')){
+          // splice inventory[i] from inventory and push to cart
+          cart.push(inventory.splice(i, 1)[0]);
+        }
+      }
+      updateCart();
     }); // end matchesOut on click of .addToCartButton
 }); // end doc ready
 
@@ -61,10 +68,18 @@ function displayMatches(matchesArray){
     for (var i = 0; i < matchesArray.length; i++) {
       var outputString = '<li>';
       outputString += matchesArray[i].description;
-      outputString += ' <button class="addToCartButton" data-description=" data description: '+matchesArray[i].description+'">Add To Cart</button></li>';
+      outputString += ' <button class="addToCartButton" data-description="'+matchesArray[i].description+'">Add To Cart</button></li>';
       matchesOutput.append(outputString);
     }
   } else {
     matchesOutput.append('<li>NONE</li>');
+  }
+}
+
+function updateCart(){
+  var output = $('#cartOut');
+  output.empty();
+  for (var i = 0; i < cart.length; i++) {
+    output.append('<li>'+cart[i].description+'</li>');
   }
 }
