@@ -61,7 +61,7 @@ function displayMatches(matchesArray){
     for (var i = 0; i < matchesArray.length; i++) {
       var outputString = '<li>';
       outputString += matchesArray[i].description;
-      outputString += ' <button class="addToCartButton" data-description="data description: '+matchesArray[i].description+'">Add To Cart</button></li>';
+      outputString += ' <button class="addToCartButton" data-description=" data description: '+matchesArray[i].description+'">Add To Cart</button></li>';
       matchesOutput.append(outputString);
     }
   } else {
