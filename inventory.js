@@ -1,5 +1,6 @@
 var inventory = [];
 var cart = [];
+var inventoryState = true; // if false, we're in sales mode
 
 
 $( document ).ready( function(){
@@ -41,6 +42,14 @@ $( document ).ready( function(){
       }
       updateCart();
     }); // end matchesOut on click of .addToCartButton
+    $('.toggleState').on('click', function(){
+      // switch inventory state between true and false
+      inventoryState = !inventoryState;
+      console.log(inventoryState);
+      updateUI();
+    }); // $('.toggleState').on('click'
+
+    updateUI();
 }); // end doc ready
 
 function displayInventory(){
@@ -81,5 +90,17 @@ function updateCart(){
   output.empty();
   for (var i = 0; i < cart.length; i++) {
     output.append('<li>'+cart[i].description+'</li>');
+  }
+}
+
+function updateUI(){
+  if(inventoryState){
+    $('#addToInventory').show();
+    $('#searchInventory').hide();
+    $('#shoppingcart').hide();
+  } else {
+    $('#addToInventory').hide();
+    $('#searchInventory').show();
+    $('#shoppingcart').show();
   }
 }
