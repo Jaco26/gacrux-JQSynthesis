@@ -31,6 +31,9 @@ $( document ).ready( function(){
       }// end for loop
       displayMatches(matches);
     });
+    $('#matchesOut').on('click', '.addToCartButton', function(){
+      console.log($(this).data('description')); // get the data-description attribute of the clicked element
+    }); // end matchesOut on click of .addToCartButton
 }); // end doc ready
 
 function displayInventory(){
@@ -57,10 +60,8 @@ function displayMatches(matchesArray){
   if(matchesArray.length > 0){
     for (var i = 0; i < matchesArray.length; i++) {
       var outputString = '<li>';
-      //outputString += matchesArray[i].size + ' ';
-      //outputString += matchesArray[i].color + ' ';
       outputString += matchesArray[i].description;
-      outputString += '</li>';
+      outputString += ' <button class="addToCartButton" data-description="data description: '+matchesArray[i].description+'">Add To Cart</button></li>';
       matchesOutput.append(outputString);
     }
   } else {
